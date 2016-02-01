@@ -9,3 +9,11 @@ body, p, ol, ul, td {
 */
 
 body { padding-top: 70px; }
+
+
+.form-inline .form-group, .form-inline .form-group label {
+    margin-right: 4px;
+}
+.form-inline .form-group:last-child {
+    margin-right: 0;
+}
