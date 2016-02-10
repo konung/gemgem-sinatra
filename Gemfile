@@ -6,7 +6,7 @@ gem "sqlite3"
 gem "trailblazer", "1.1.0"  # operation
 gem "dry-validation", ">= 0.4.0"
 gem "cells"                     # presentation
-gem "cells-slim", ">= 0.0.4"
+gem "cells-erb"#, ">= 0.0.4"
 gem "trailblazer-cells"
 gem "reform",      "2.1.0"  # validation
 gem "rerun"

@@ -10,9 +10,9 @@ GEM
     cells (4.0.4)
       tilt (>= 1.4, < 3)
       uber (~> 0.0.9)
-    cells-slim (0.0.4)
-      cells (~> 4.0.0.beta6)
-      slim (~> 3.0)
+    cells-erb (0.0.7)
+      cells (~> 4.0)
+      erbse (>= 0.0.2)
     declarative (0.0.5)
       uber (>= 0.0.15)
     disposable (0.2.5)
@@ -42,6 +42,7 @@ GEM
       dry-data (~> 0.5, >= 0.5.0)
       dry-equalizer (~> 0.2)
       dry-logic (~> 0.1, >= 0.1.2)
+    erbse (0.0.2)
     ffi (1.9.10)
     inflecto (0.0.2)
     kleisli (0.2.7)
@@ -71,11 +72,7 @@ GEM
     sinatra-sequel (0.9.0)
       sequel (>= 3.2.0)
       sinatra (>= 0.9.4)
-    slim (3.0.6)
-      temple (~> 0.7.3)
-      tilt (>= 1.3.3, < 2.1)
     sqlite3 (1.3.11)
-    temple (0.7.6)
     thread_safe (0.3.5)
     tilt (2.0.2)
     trailblazer (1.1.0)
@@ -92,7 +89,7 @@ PLATFORMS
 DEPENDENCIES
   benchmark-ips
   cells
-  cells-slim (>= 0.0.4)
+  cells-erb
   dry-validation (>= 0.4.0)
   formular!
   reform (= 2.1.0)
@@ -104,4 +101,4 @@ DEPENDENCIES
   trailblazer-cells
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
