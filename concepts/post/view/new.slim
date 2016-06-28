@@ -3,54 +3,35 @@
     .page-header.text-center
       h1 New Post!
 
-    = form(model.contract, url) do |f|
+    = vertical_form(model: model.contract, action: url) do |f|
+      = f.input :title
+      = f.input :url_slug
 
-      = f.input :title, label: "Title"
-      = f.input :url_slug, label: "URL slug", input_group: { left: { content: "http://localhost::4567/"} }
+      = f.select :select_roles, collection: [[1, "Admin"], [2, "Owner"], [3, "Maintainer"]]
 
-      .form-group
-        = f.checkbox :is_public, label: "Public?"
-      .form-group
-        = f.radio :owner, label: "Flori", value: 1
-        = f.radio :owner, label: "Konsti", value: 2
-
-      .row
-        .col-md-2
-          = f.collection :owner, [["Flori", 1], ["Konsti", 2]], type: :radio, label: "Owners"
-        .col-md-3
-          = f.collection :owner, [["Flori", 1], ["Konsti", 2]], type: :radio, label: "Owners, inline", inline: true
-        = f.collection :roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], type: :checkbox, checked: model.contract.roles, label: "Roles", wrapper_attrs: { class: ["col-md-2"] }
-        = f.collection :roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], type: :checkbox, inline: true, checked: model.contract.roles, label: "Roles, inline", wrapper_attrs: { class: ["col-md-5"] }
-
-      = f.select :select_roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], selected: model.contract.select_roles, label: "Selectable Roles"
-
-      = f.textarea :content, placeholder: "And your story...", rows: 9, label: "Content"
-      = f.button type: :submit, value: "Submit!", class: [:btn, :'btn-lg', :'btn-default']
+      = f.textarea :content, placeholder: "And your story...", rows: 9
+      = f.submit value: "Submit!", class: ['btn-lg']
 
     .page-header.text-center
       h1 Inline Form
 
-    = form(model.contract, url, style: :inline, class: ["bright"]) do |f|
-      = f.input :title, label: "Title"
-      = f.checkbox :is_public, label: " Public?"
-      = f.input :url_slug, label: "URL slug", placeholder: "URL slug", label_attrs: { class: ["sr-only"] }, input_group: { right: { content: f.button(type: :submit, value: "Submit!", class: [:btn, :'btn-default']), button: true } }
+    = inline_form(model: model.contract, action: url) do |f|
+      = f.input :title
+      = f.input :url_slug, placeholder: "URL slug", label_options: { class: ["sr-only"] }
+      =f.submit(value: "Submit!")
 
 .page-header.text-center
   h1 Horizontal Form
 
-= form(model.contract, url, style: :horizontal) do |f|
-  = f.input :title, label: "Title", column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"] }, style: :horizontal
+= horizontal_form(model: model.contract, action: url) do |f|
+  = f.input :title
 
-  = f.input :url_slug, label: "URL slug", column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"] }, style: :horizontal, input_group: { left: { content: "http://localhost::4567/" }, right: { content: "<span class='glyphicon glyphicon-globe'></span>"} }
+  = f.input :url_slug
 
-  = f.textarea :content, placeholder: "And your story...", rows: 9, label: "Content", column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"] }, style: :horizontal
+  = f.textarea :content, placeholder: "And your story...", rows: 9
 
-  = f.collection :owner, [["Flori", 1], ["Konsti", 2]], type: :radio, label: "Owners", style: :horizontal, column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"] }
-
-  = f.select :select_roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], selected: model.contract.select_roles, label: "Selectable Roles", style: :horizontal, column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"]}
-
-  = f.collection :roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], type: :checkbox, inline: true, checked: model.contract.roles, style: :horizontal, column_attrs: { input_class: ["col-sm-10", "col-sm-offset-2"]}
+  = f.select :select_roles, collection: [["Admin", 1], ["Owner", 2], ["Maintainer", 3]]
 
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.button type: :submit, value: "Submit!", class: [:btn, :'btn-lg', :'btn-default']
+      = f.submit value: "Submit!", class: ['btn-lg']
