@@ -15,6 +15,7 @@ class Post::Create < Trailblazer::Operation
 
     validation :default do
       key(:title, &:filled?)
+      key(:select_roles, &:filled?)
       key(:url_slug) { |slug| slug.format?(/^[\w-]+$/) & slug.unique? }
       key(:content) { |content| content.max_size?(10) } # i know that a real blog post should be a bit more elaborating.
 

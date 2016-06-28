@@ -4,12 +4,36 @@
       h1 New Post!
 
     = vertical_form(model: model.contract, action: url) do |f|
-      = f.input :title
-      = f.input :url_slug
+      .row
+        .col-sm-6
+          = f.input_group :title, label: "Title" do |input|
+            =input.group_addon('<input type="checkbox" value="1"/>')
+            =input.control
+        .col-sm-6
+          = f.input :url_slug, label: "URL Slug"
 
-      = f.select :select_roles, collection: [[1, "Admin"], [2, "Owner"], [3, "Maintainer"]]
+      = f.input_group :url_slug, label: "URL", left_addon: 'http://', right_addon: '.com'
+
+      = f.select :select_roles, label: "Roles", collection: [[nil, 'Choose a role'], [1, "Admin"], [2, "Owner"], [3, "Maintainer"]]
+
+      = f.inline_radio :select_roles, label: "Inline radios", collection: [[1, "Yes"], [2, "No"], [3, "I really don't know"]]
+
+      = f.inline_checkbox :select_roles, label: "Inline checkboxes", collection: [[1, "Option 1"], [2, "Option 2"], [3, "Option 3"]]
+
+      hr
+      h4 Checkboxes in columns!
+      .row
+        .col-sm-4
+          = f.checkbox :select_roles, label: "Column 1", collection: [[1, "Option 1"], [2, "Option 2"], [3, "Option 3"]]
+        .col-sm-4
+          = f.checkbox :select_roles, label: "Column 2", collection: [[1, "Option 1"], [2, "Option 2"], [3, "Option 3"]]
+        .col-sm-4
+          = f.checkbox :select_roles, label: "Column 3", collection: [[1, "Option 1"], [2, "Option 2"], [3, "Option 3"]]
+      hr
 
       = f.textarea :content, placeholder: "And your story...", rows: 9
+      = f.checkbox :is_public, label: "Public?", value: "1"
+
       = f.submit value: "Submit!", class: ['btn-lg']
 
     .page-header.text-center
@@ -24,7 +48,7 @@
   h1 Horizontal Form
 
 = horizontal_form(model: model.contract, action: url) do |f|
-  = f.input :title
+  = f.input_group :title, label: "Title", right_btn: "<a href='#' class='btn btn-default'>Suprise Me</a>"
 
   = f.input :url_slug
 
