@@ -2,6 +2,8 @@ PATH
   remote: ../formular
   specs:
     formular (0.1.0)
+      declarative (~> 0.0.4)
+      uber (~> 0.0.11)
 
 GEM
   remote: https://rubygems.org/
