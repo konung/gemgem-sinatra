@@ -3,66 +3,84 @@
     <div class="page-header text-center">
       <h1>New Post!</h1>
     </div>
-    <%= form(model.contract, url) do |f| %>
-      <%= f.input :title, label: "Title" %>
-      <%= f.input :url_slug, label: "URL slug", input_group: { left: { content: "http://localhost::4567/"} } %>
-
-      <div class="form-group">
-        <%= f.checkbox :is_public, label: "Public?" %>
-      </div>
-      <div class="form-group">
-        <%= f.radio :owner, label: "Flori", value: 1 %>
-        <%= f.radio :owner, label: "Konsti", value: 2 %>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-          <%= f.collection :owner, [["Flori", 1], ["Konsti", 2]], type: :radio, label: "Owners" %>
+    <% vf = vertical_form(model.contract, url) %>
+    <%= vf.start %>
+      <%= vf.row.start %>
+        <div class="col-sm-6">
+          <% ig = vf.input_group :title, label: "Title" %>
+          <%= ig.start %>
+            <%= ig.group_addon('<input type="checkbox" value="1"/>') %>
+            <%= ig.control %>
+          <%= ig.end %>
         </div>
-        <div class="col-md-3">
-          <%= f.collection :owner, [["Flori", 1], ["Konsti", 2]], type: :radio, label: "Owners, inline", inline: true %>
+        <%= vf.input :url_slug, label: "URL Slug", inline_col_class: ['col-sm-6'] %>
+      <%= vf.row.end %>
+
+      <%= vf.input_group :url_slug, label: "URL", left_addon: 'http://', right_addon: '.com' %>
+
+      <%= vf.select :select_roles, label: "Roles", collection: roles_array, stacked_col_class: ['col-md-6'] %>
+
+      <%= vf.inline_radio :select_roles, label: "Inline radios", collection: [[1, "Yes"], [2, "No"], [3, "I really don't know"]] %>
+
+      <%= vf.inline_checkbox :select_roles, label: "Inline checkboxes", collection: options_array %>
+
+      <hr/>
+      <h4>Checkboxes in columns!</h4>
+      <%= vf.row.start %>
+        <div class="col-sm-4">
+          <%= vf.checkbox :select_roles, label: "Column 1", collection: options_array %>
         </div>
 
-        <%= f.collection :roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], type: :checkbox, checked: model.contract.roles, label: "Roles", wrapper_attrs: { class: ["col-md-2"] } %>
+        <div class="col-sm-4">
+          <%= vf.checkbox :select_roles, label: "Column 2", collection: options_array %>
+        </div>
 
-        <%= f.collection :roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], type: :checkbox, inline: true, checked: model.contract.roles, label: "Roles, inline", wrapper_attrs: { class: ["col-md-5"] } %>
-      </div>
-      <%= f.select :select_roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], selected: model.contract.select_roles, label: "Selectable Roles" %>
+        <div class="col-sm-4">
+          <%= vf.checkbox :select_roles, label: "Column 3", collection: options_array %>
+        </div>
+      <%= vf.row.end %>
+      <hr/>
 
-      <%= f.textarea :content, placeholder: "And your story...", rows: 9, label: "Content" %>
-      <%= f.button type: :submit, value: "Submit!", class: [:btn, :'btn-lg', :'btn-default'] %>
-    <% end %>
+      <%= vf.textarea :content, placeholder: "And your story...", rows: 9 %>
+      <%= vf.checkbox :is_public, label: "Public?", value: "1" %>
+
+      <%= vf.submit value: "Submit!", class: ['btn-lg'] %>
+    <%= vf.end %>
 
     <div class="page-header text-center">
       <h1>Inline Form</h1>
+
+      <% inf = inline_form(model.contract, url) %>
+      <%= inf.start %>
+        <%= inf.input :title %>
+        <%= inf.input :url_slug, label: 'url slug', placeholder: "URL slug", label_options: { class: ["sr-only"] } %>
+        <%= inf.submit(value: "Submit!") %>
+      <%= inf.end %>
     </div>
-    <%= form(model.contract, url, style: :inline, class: ["bright"]) do |f| %>
-      <%= f.input :title, label: "Title" %>
-      <%= f.checkbox :is_public, label: " Public?" %>
-      <%= f.input :url_slug, label: "URL slug", placeholder: "URL slug", label_attrs: { class: ["sr-only"] }, input_group: { right: { content: f.button(type: :submit, value: "Submit!", class: [:btn, :'btn-default']), button: true } } %>
-    <% end %>
   </div>
 </div>
 
 <div class="page-header text-center">
   <h1>Horizontal Form</h1>
 </div>
-<%= form(model.contract, url, style: :horizontal) do |f| %>
+<% hf = horizontal_form(model.contract, url) %>
+<%= hf.start %>
 
-  <%= f.input :title, label: "Title", column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"] }, style: :horizontal %>
+  <% ig = hf.input_group :title, label: "Title" %>
+  <%= ig.start %>
+    <%= ig.control %>
+    <%= ig.group_btn("<a class='btn btn-default' href='#'>Suprise Me</a>") %>
+  <%= ig.end %>
 
-  <%= f.input :url_slug, label: "URL slug", column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"] }, style: :horizontal, input_group: { left: { content: "http://localhost::4567/" }, right: { content: "<span class='glyphicon glyphicon-globe'></span>"} } %>
+  <%= hf.input :url_slug, label: 'URL Slug' %>
 
-  <%= f.textarea :content, placeholder: "And your story...", rows: 9, label: "Content", column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"] }, style: :horizontal %>
+  <%= hf.textarea :content, label: 'Content', placeholder: "And your story...", rows: 9 %>
 
-  <%= f.collection :owner, [["Flori", 1], ["Konsti", 2]], type: :radio, label: "Owners", style: :horizontal, column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"] } %>
-
-  <%= f.select :select_roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], selected: model.contract.select_roles, label: "Selectable Roles", style: :horizontal, column_attrs: { label_class: ["col-sm-2"], input_class: ["col-sm-10"]} %>
-
-  <%= f.collection :roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], type: :checkbox, inline: true, checked: model.contract.roles, style: :horizontal, column_attrs: { input_class: ["col-sm-10", "col-sm-offset-2"]} %>
+  <%= hf.select :select_roles, label: 'Label', collection: roles_array %>
 
   <div class="form-group">
-    <div class="col-sm-offset-2.col-sm-10">
-      <%= f.button type: :submit, value: "Submit!", class: [:btn, :'btn-lg', :'btn-default'] %>
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= hf.submit value: "Submit!", class: ['btn-lg'] %>
     </div>
   </div>
-<% end %>
+<%= hf.end %>

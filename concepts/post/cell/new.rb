@@ -3,9 +3,31 @@ require "formular"
 module Post::Cell
   class New < Trailblazer::Cell
     include Formular::Helper
-    Formular::Helper.frontend :bootstrap3
 
   private
+    def vertical_form(model, url, **options, &block)
+      options[:builder] = :bootstrap3
+      form(model, url, options, &block)
+    end
+
+    def inline_form(model, url, **options, &block)
+      options[:builder] = :bootstrap3_inline
+      form(model, url, options, &block)
+    end
+
+    def horizontal_form(model, url, **options, &block)
+      options[:builder] = :bootstrap3_horizontal
+      form(model, url, options, &block)
+    end
+
+    def options_array
+      [["Option 1", 1], ["Option 2", 2], ["Option 3", 3]]
+    end
+
+    def roles_array
+      [['Choose a role', nil], ["Admin", 1], ["Owner", 2], ["Maintainer", 3]]
+    end
+
     def url
       options[:url] || raise("no action URL!")
     end
