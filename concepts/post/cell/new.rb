@@ -6,30 +6,30 @@ module Post::Cell
 
   private
     def vertical_form(model, url, **options, &block)
-      options[:builder] = :bootstrap3
+      options[:builder] = :bootstrap4
       form(model, url, options, &block)
       #Formular::Builders::Bootstrap3.new(model: model, prefix_path: :comment).form(options, &block)
     end
 
     def inline_form(model, url, **options, &block)
-      options[:builder] = :bootstrap3_inline
+      options[:builder] = :bootstrap4_inline
       form(model, url, options, &block)
 
       #Formular::Builders::Bootstrap3Inline.new(model: model, prefix_path: :comment).form(options, &block)
     end
 
     def horizontal_form(model, url, **options, &block)
-      options[:builder] = :bootstrap3_horizontal
+      options[:builder] = :bootstrap4_horizontal
       form(model, url, options, &block)
       #Formular::Builders::Bootstrap3Horizontal.new(model: model, prefix_path: :comment).form(options, &block)
     end
 
     def options_array
-      [[1, "Option 1"], [2, "Option 2"], [3, "Option 3"]]
+      [["Option 1", 1], ["Option 2", 2], ["Option 3", 3]]
     end
 
     def roles_array
-      [[nil, 'Choose a role'], [1, "Admin"], [2, "Owner"], [3, "Maintainer"]]
+      [['Choose a role', nil], ["Admin", 1], ["Owner", 2], ["Maintainer", 3]]
     end
 
     def url

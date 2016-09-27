@@ -2,30 +2,28 @@
   <html class="no-js" lang="en">
     <head>
       <meta charset="utf-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       <title>Sinatra Sings Gemgem | Welcome</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
       <link rel="stylesheet" href="/app.css">
   </head>
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-dark bg-inverse navbar-fixed-top">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Trailblazer</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
+        <a class="navbar-brand" href="#">Trailblazer</a>
+        <ul class="nav navbar-nav pull-xs-right">
           <!-- <li class="menu-text">Blog</li> -->
-          <li><a href="/posts/new">New Post</a></li>
-          <li><a href="/posts">All</a></li>
-      </ul>
+          <li class="nav-item"><a class="nav-link" href="/posts/new">New Post</a></li>
+          <li class="nav-item"><a class="nav-link" href="/posts">All</a></li>
+        </ul>
       </div>
     </div>
     div class="container-fluid"
       <div class="jumbotron">
-        <div class="text-center">
-          <h1>Sinatra and Trailblazer</h1>
+        <div class="text-xs-center">
+          <h1 class="display-1">Sinatra and Trailblazer</h1>
           <p>Our blog about high-level architecture and awesome software.</p>
         </div>
       </div>
@@ -33,6 +31,7 @@
       = yield
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
   </body>
 </html>

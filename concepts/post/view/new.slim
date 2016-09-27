@@ -1,7 +1,6 @@
 .row
-  .col-sm-6.col-sm-offset-3
-    .page-header.text-center
-      h1 New Post!
+  .col-sm-6.offset-sm-3
+    h1.display-3.text-xs-center New Post!
 
     = vertical_form(model.contract, url) do |f|
       .row
@@ -32,32 +31,71 @@
       hr
 
       = f.textarea :content, placeholder: "And your story...", rows: 9
+
       = f.checkbox :is_public, label: "Public?", value: "1"
+
+      hr
+      h4 Custom Controls
+
+      = f.custom_file :content, label: 'Custom File'
+
+      = f.custom_select :select_roles, label: "Custom Select", collection: roles_array
+
+      = f.custom_radio :select_roles, label: "Custom Inline radios", collection: options_array
+
+      = f.custom_checkbox :select_roles, label: "Custom Inline checkbox", collection: options_array
+
+      = f.custom_stacked_radio :select_roles, label: "Custom Stacked radios", collection: options_array
+
+      = f.custom_stacked_checkbox :select_roles, label: "Custom Stacked checkbox", collection: options_array
 
       = f.submit value: "Submit!", class: ['btn-lg']
 
-    .page-header.text-center
-      h1 Inline Form
+hr
+.row
+  .col-sm-6.offset-sm-3
+    h1.display-3.text-xs-center Inline Form
 
     = inline_form(model.contract, url) do |f|
       = f.input :title
       = f.input :url_slug, label: 'url slug', placeholder: "URL slug", label_options: { class: ["sr-only"] }
       =f.submit(value: "Submit!")
 
-.page-header.text-center
-  h1 Horizontal Form
+    hr
 
-= horizontal_form(model.contract, url) do |f|
-  = f.input_group :title, label: "Title" do |input|
-    =input.control
-    =input.group_btn("<a class='btn btn-default' href='#'>Suprise Me</a>")
+    = inline_form(model.contract, url) do |f|
+      = f.custom_file :content, label: 'Attachment'
+      =f.submit(value: "Submit!")
 
-  = f.input :url_slug
+hr
+.row
+  h1.display-3.text-xs-center Horizontal Form
 
-  = f.textarea :content, placeholder: "And your story...", rows: 9
+  = horizontal_form(model.contract, url) do |f|
+    = f.input_group :title, label: "Title" do |input|
+      =input.control
+      =input.group_btn("<a class='btn btn-secondary' href='#'>Suprise Me</a>")
 
-  = f.select :select_roles, collection: roles_array
+    = f.input :url_slug, label: 'URL'
 
-  .form-group
-    .col-sm-offset-2.col-sm-10
-      = f.submit value: "Submit!", class: ['btn-lg']
+    = f.textarea :content, label: 'Content', placeholder: "And your story...", rows: 9
+
+    = f.inline_checkbox :select_roles, label: "Inline checkboxes", collection: options_array
+
+    = f.radio :select_roles, label: "Stacked radios", collection: options_array
+
+    = f.select :select_roles, label: 'Role', collection: roles_array
+
+    = f.custom_file :content, label: 'Custom File'
+
+    = f.custom_select :select_roles, label: "Custom Select", collection: roles_array
+
+    = f.custom_radio :select_roles, label: "Custom Inline radios", collection: options_array
+
+    = f.custom_checkbox :select_roles, label: "Custom Inline checkbox", collection: options_array
+
+    = f.custom_stacked_radio :select_roles, label: "Custom Stacked radios", collection: options_array
+
+    = f.custom_stacked_checkbox :select_roles, label: "Custom Stacked checkbox", collection: options_array
+
+    = f.submit value: "Submit!", class: ['btn-lg']
