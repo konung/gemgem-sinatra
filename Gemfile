@@ -16,5 +16,5 @@ gem "benchmark-ips"
 
 
 
-gem "formular", path: "../formular"
+gem "formular"#, path: "../formular"
 # gem "formular", git: "https://github.com/apotonick/formular.git"
