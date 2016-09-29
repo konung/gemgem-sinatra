@@ -13,4 +13,4 @@ gem "cells-slim", ">= 0.0.4"
 gem "trailblazer-cells"#, path: "../trailblazer-cells"
 gem "rerun"
 
-gem "formular", git: "https://github.com/apotonick/formular.git"
+gem "formular"#, git: "https://github.com/apotonick/formular.git"

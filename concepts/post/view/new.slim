@@ -1,26 +1,21 @@
 .page-header.text-center
   h1 New Post!
 
-- require "formular"
-- require "formular/frontend/bootstrap3"
+= vertical_form(model.contract, url) do |f|
+  = f.input :title, placeholder: "Title"
+  = f.input :url_slug, placeholder: "URL slug"
+  = f.checkbox :is_public, label: "Public?"
+  .row
+    .col-sm-6
+      = f.radio :owner, collection: options_array, label: 'Owner'
+    .col-sm-6
+      = f.checkbox :roles, collection: roles_array, label: "Roles"
 
-= Formular::Bootstrap3::Builder.new(model: model.contract).form(action: url, method: :post) do |f| 
+  = f.textarea :content, placeholder: "And your story...", rows: 9
 
-  .form-group
-    = f.input :title, placeholder: "Title"
-  .from-group
-    = f.input :url_slug, placeholder: "URL slug"
-  .form-group
-    = f.checkbox :is_public, label: "Public?"
-  .form-group
-    = f.radio :owner, label: "Flori", value: 1
-    = f.radio :owner, label: "Konsti", value: 2
-  .form-group
-    = f.collection :roles, [["Admin", 1], ["Owner", 2], ["Maintainer", 3]], type: :checkbox, checked: (model.contract.roles||[]), label: "Roles"
-  .form-group
-    = f.textarea :content, placeholder: "And your story...", rows: 9
-  .form-group
-    = f.button type: :submit, value: "Submit!", class: [:btn, :'btn-lg', :'btn-default']
+  = f.input :content, type: 'file', label: 'Attachment'
+
+  = f.submit value: "Submit!", class: ['btn-lg']
 
 .page-header.text-center
   h1 Manual Basic form for comparison
@@ -29,11 +24,11 @@ form action="#{url}" method="post"
   .form-group
     label for="text" Text Field
     input type="text" name="text" class="form-control"
-    
+
   .form-group
     label for="text-area" Text Area
     textarea name="text-area" rows="3" class="form-control"
-  
+
   .form-group
     label Stacked Checkboxes
     div class="checkbox"
@@ -45,7 +40,7 @@ form action="#{url}" method="post"
     div class="checkbox"
       label
         input type="checkbox" Stacked Checkbox 3
-  
+
   .form-group
     label Inline Checkboxes
     .
@@ -55,7 +50,7 @@ form action="#{url}" method="post"
         input type="checkbox" inline checkbox 2
       label class="checkbox-inline"
         input type="checkbox" inline checkbox 3
-  
+
   .form-group
     label Stacked Radio Buttons
     div class="radio"
@@ -67,7 +62,7 @@ form action="#{url}" method="post"
     div class="radio"
       label
         input type="radio" name="stackedRadio" Stacked Radio Button 3
-      
+
   .form-group
     label Inline Radio Buttons
     .
@@ -85,7 +80,7 @@ form action="#{url}" method="post"
       option 2
       option 3
       option 4
-  
+
   .form-group
     label for="exampleSelectMultiple" Select Field (multiple)
     select class="form-control" multiple="" id="exampleSelectMultiple"
@@ -93,10 +88,9 @@ form action="#{url}" method="post"
       option 2
       option 3
       option 4
-  
+
   .form-group
     label for="exampleInputFile" File input
     input type="file" id="exampleInputFile"
 
   input type="submit" class="btn btn-lg btn-default"
-  
