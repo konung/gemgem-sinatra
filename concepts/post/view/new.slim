@@ -52,12 +52,10 @@
     =input.control
     =input.group_btn("<a class='btn btn-default' href='#'>Suprise Me</a>")
 
-  = f.input :url_slug
+  = f.input :url_slug, label: 'URL'
 
-  = f.textarea :content, placeholder: "And your story...", rows: 9
+  = f.textarea :content, placeholder: "And your story...", rows: 9, label: 'Content'
 
-  = f.select :select_roles, collection: roles_array
+  = f.select :select_roles, collection: roles_array, label: 'Role'
 
-  .form-group
-    .col-sm-offset-2.col-sm-10
-      = f.submit value: "Submit!", class: ['btn-lg']
+  = f.submit value: "Submit!", class: ['btn-lg']

@@ -1,7 +1,7 @@
 PATH
   remote: ../formular
   specs:
-    formular (0.1.0)
+    formular (0.2.1)
       declarative (~> 0.0.4)
       uber (~> 0.0.11)
 

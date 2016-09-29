@@ -25,11 +25,11 @@ module Post::Cell
     end
 
     def options_array
-      [[1, "Option 1"], [2, "Option 2"], [3, "Option 3"]]
+      [["Option 1", 1], ["Option 2", 2], ["Option 3", 3]]
     end
 
     def roles_array
-      [[nil, 'Choose a role'], [1, "Admin"], [2, "Owner"], [3, "Maintainer"]]
+      [['Choose a role', nil], ["Admin", 1], ["Owner", 2], ["Maintainer", 3]]
     end
 
     def url
