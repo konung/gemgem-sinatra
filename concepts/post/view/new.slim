@@ -14,7 +14,7 @@
 
       = f.input_group :url_slug, label: "URL", left_addon: 'http://', right_addon: '.com'
 
-      = f.select :select_roles, label: "Roles", collection: roles_array
+      = f.select :select_roles, label: "Roles", collection: roles_array, prompt: 'Choose a role'
 
       = f.inline_radio :select_roles, label: "Inline radios", collection: [[1, "Yes"], [2, "No"], [3, "I really don't know"]]
 
@@ -56,6 +56,6 @@
 
   = f.textarea :content, placeholder: "And your story...", rows: 9, label: 'Content'
 
-  = f.select :select_roles, collection: roles_array, label: 'Role'
+  = f.select :select_roles, collection: roles_array, label: 'Role', prompt: 'Choose a role'
 
   = f.submit value: "Submit!", class: ['btn-lg']

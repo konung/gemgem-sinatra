@@ -29,7 +29,7 @@ module Post::Cell
     end
 
     def roles_array
-      [['Choose a role', nil], ["Admin", 1], ["Owner", 2], ["Maintainer", 3]]
+      [["Admin", 1], ["Owner", 2], ["Maintainer", 3]]
     end
 
     def url
