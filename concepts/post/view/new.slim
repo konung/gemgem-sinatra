@@ -34,7 +34,7 @@
       = f.textarea :content, placeholder: "And your story...", rows: 9
       = f.checkbox :is_public, label: "Public?", value: "1"
 
-      = f.submit value: "Submit!", class: ['btn-lg']
+      = f.submit content: "Submit!", class: ['btn-lg']
 
     .page-header.text-center
       h1 Inline Form
@@ -42,7 +42,7 @@
     = inline_form(model.contract, url) do |f|
       = f.input :title
       = f.input :url_slug, label: 'url slug', placeholder: "URL slug", label_options: { class: ["sr-only"] }
-      =f.submit(value: "Submit!")
+      =f.submit(content: "Submit!")
 
 .page-header.text-center
   h1 Horizontal Form
@@ -58,4 +58,4 @@
 
   = f.select :select_roles, collection: roles_array, label: 'Role', prompt: 'Choose a role'
 
-  = f.submit value: "Submit!", class: ['btn-lg']
+  = f.submit content: "Submit!", class: ['btn-lg']
