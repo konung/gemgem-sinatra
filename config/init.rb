@@ -19,10 +19,10 @@ Sequel::Model.strict_param_setting = false
 require "trailblazer/operation"
 require "reform/form/dry"
 require "trailblazer/cells"
-require "cells-slim"
+require "cells-haml"
 
 Trailblazer::Cell.class_eval do
-  include Cell::Slim
+  include Cell::Haml
   self.view_paths = ["concepts"] # DISCUSS: is that the right place?
 end
 

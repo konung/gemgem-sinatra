@@ -1,3 +1,5 @@
+_Copied from Slim-bootstrap4 branch and converted to haml
+
 # Sinatra With Trailblazer
 
 _Cause We Can._
@@ -13,7 +15,7 @@ The following gems are used in this project.
 | Reform | Validation |
 | Dry-validation | Validation |
 | Cells | Presentation |
-| Slim | Presentation |
+| Haml | Presentation |
 | Formular| Form Rendering |
 
 ## Run
